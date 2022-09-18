@@ -1,0 +1,1112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.103.0.12\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.103.0.12\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.103.0.12\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.103.0.12\build\cef.redist.x64.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B37E0E00-4ADF-423E-9886-7AD46F106A3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Project</RootNamespace>
+    <AssemblyName>Project</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Extro\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>82E84E3AF288359657D6BF63015F13C710F642C2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Project_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CefSharp, Version=103.0.120.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Common.103.0.120\lib\net452\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=103.0.120.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Common.103.0.120\lib\net452\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Wpf, Version=103.0.120.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Wpf.103.0.120\lib\net462\CefSharp.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFrameworkCore.Jet, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkCore.Jet.3.1.1\lib\net461\EntityFrameworkCore.Jet.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFrameworkCore.Jet.Data, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkCore.Jet.Data.3.1.1\lib\net461\EntityFrameworkCore.Jet.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="linq2db, Version=4.2.0.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.4.2.0\lib\net472\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.22\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.3.1.22\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.22\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmHelpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Refractored.MvvmHelpers.1.6.2\lib\net461\MvvmHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pipelines.Sockets.Unofficial.2.2.2\lib\net472\Pipelines.Sockets.Unofficial.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="StackExchange.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.2.2.88\lib\net472\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OleDb, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.OleDb.6.0.0\lib\net461\System.Data.OleDb.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.PerformanceCounter, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.PerformanceCounter.5.0.0\lib\net461\System.Diagnostics.PerformanceCounter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.1\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Threading.Channels, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.5.0.0\lib\net461\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityController, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnityController.1.0.0\lib\netstandard2.0\UnityController.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ErrorTest.xaml.cs">
+      <DependentUpon>ErrorTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lessen.xaml.cs">
+      <DependentUpon>Lessen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Libry.xaml.cs">
+      <DependentUpon>Libry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\Class\Action.cs" />
+    <Compile Include="net\Class\ButtonGen.cs" />
+    <Compile Include="net\Class\Exercises.cs" />
+    <Compile Include="net\Class\Library.cs" />
+    <Compile Include="net\Class\Normativ.cs" />
+    <Compile Include="net\Class\Question.cs" />
+    <Compile Include="net\Class\StateTest.cs" />
+    <Compile Include="net\Class\Subdivision.cs" />
+    <Compile Include="net\Class\Test.cs" />
+    <Compile Include="net\MobileContext.cs" />
+    <Compile Include="net\Class\Podr.cs" />
+    <Compile Include="net\Class\User.cs" />
+    <Compile Include="net\normativ.cs" />
+    <Compile Include="net\Server.cs" />
+    <Compile Include="NormativForm.xaml.cs">
+      <DependentUpon>NormativForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Performance.xaml.cs">
+      <DependentUpon>Performance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Print.xaml.cs">
+      <DependentUpon>Print.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectMenu.xaml.cs">
+      <DependentUpon>ProjectMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="ShowResul.xaml.cs">
+      <DependentUpon>ShowResul.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statist.xaml.cs">
+      <DependentUpon>Statist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestLesson.xaml.cs">
+      <DependentUpon>TestLesson.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenu.xaml.cs">
+      <DependentUpon>UserMenu.xaml</DependentUpon>
+    </Compile>
+    <Page Include="dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ErrorTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lessen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Libry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="NormativForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Performance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Print.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProjectMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowResul.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestLesson.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Project_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.files\themedata.thmx" />
+    <None Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\Thumbs.db" />
+    <None Include="Resources\Literature\П-240и-4 методическое пособие.files\Thumbs.db" />
+    <None Include="Resources\Literature\Подготовка по связи.docx" />
+    <None Include="Resources\Literature\Подготовка по связи.files\image001.emz" />
+    <None Include="Resources\Literature\Подготовка по связи.files\oledata.mso" />
+    <None Include="Resources\Literature\Подготовка по связи.files\themedata.thmx" />
+    <None Include="Resources\Literature\Подготовка по связи.files\Thumbs.db" />
+    <None Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\Thumbs.db" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image001.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image102.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image108.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image112.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image121.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image122.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image123.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image124.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image125.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image126.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image127.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image128.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image129.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image130.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\image131.emz" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\oledata.mso" />
+    <None Include="Resources\Literature\ТП ТЛГ 2020.files\themedata.thmx" />
+    <None Include="Resources\Literature\УТК МКСС.files\themedata.thmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\back.gif" />
+    <Resource Include="Resources\back2.gif" />
+    <Resource Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.files\colorschememapping.xml" />
+    <Resource Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.files\filelist.xml" />
+    <Resource Include="Resources\backMenu.jpg" />
+    <None Include="Resources\BD.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.files\header.htm" />
+    <Resource Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.files\item0001.xml" />
+    <Resource Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.files\props002.xml" />
+    <Content Include="Resources\Literature\3.Структурно-логическая схема АЗС 2020.htm" />
+    <Content Include="Resources\Literature\Rukovodstvo-Po-Radiosvyazi-Vs-Sssr.html" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image001.jpg" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image002.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image003.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image004.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image005.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image006.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image007.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image008.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image009.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image010.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image011.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image012.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image013.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image014.gif" />
+    <Resource Include="Resources\Literature\Курс стрельб СО, БМ и Т.files\image015.gif" />
+    <Content Include="Resources\Literature\Курс стрельб СО, БМ и Т.htm" />
+    <Content Include="Resources\Literature\Новые-образцы-техники.html" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image001.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image002.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image003.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image004.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image005.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image006.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image007.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image008.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image009.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image010.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image011.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image012.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image013.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image014.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image015.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image016.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image017.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image018.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image019.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image020.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image021.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image022.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image023.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image024.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image025.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image026.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image027.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image028.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image029.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image030.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image031.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image032.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image033.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image034.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image035.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image036.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image037.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image038.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image039.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image040.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image041.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image042.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image043.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image044.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image045.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image046.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image047.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image048.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image049.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image050.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image051.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image052.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image053.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image054.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image055.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image056.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image057.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image058.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image059.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image060.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image061.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image062.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image063.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image064.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image065.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image066.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image067.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image068.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image069.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image070.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image071.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image072.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image073.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image074.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image075.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image076.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image077.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image078.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image079.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image080.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image081.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image082.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image083.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image084.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image085.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image086.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image087.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image088.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image089.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image090.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image091.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image092.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image093.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image094.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image095.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image096.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image097.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image098.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image099.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image100.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image101.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image102.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image103.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image104.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image105.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image106.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image107.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image108.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image109.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image110.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image111.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image112.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image113.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image114.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image115.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image116.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image117.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image118.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image119.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image120.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image121.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image122.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image123.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image124.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image125.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image126.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image127.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image128.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image129.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image130.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image131.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image132.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image133.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image134.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image135.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image136.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image137.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image138.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image139.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image140.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image141.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image142.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image143.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image144.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image145.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image146.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image147.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image148.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image149.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image150.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image151.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image152.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image153.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image154.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image155.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image156.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image157.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image158.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image159.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image160.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image161.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image162.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image163.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image164.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image165.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image166.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image167.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image168.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image169.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image170.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image171.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image172.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image173.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image174.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image175.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image176.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image177.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image178.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image179.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image180.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image181.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image182.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image183.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image184.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image185.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image186.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image187.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image188.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image189.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image190.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image191.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image192.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image193.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image194.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image195.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image196.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image197.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image198.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image199.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image200.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image201.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image202.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image203.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image204.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image205.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image206.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image207.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image208.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image209.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image210.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image211.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image212.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image213.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image214.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image215.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image216.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image217.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image218.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image219.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image220.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image221.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image222.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image223.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image224.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image225.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image226.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image227.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image228.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image229.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image230.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image231.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image232.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image233.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image234.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image235.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image236.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image237.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image238.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image239.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image240.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image241.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image242.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image243.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image244.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image245.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image246.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image247.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image248.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image249.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image250.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image251.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image252.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image253.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image254.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image255.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image256.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image257.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image258.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image259.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image260.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image261.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image262.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image263.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image264.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image265.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image266.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image267.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image268.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image269.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image270.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image271.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image272.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image273.gif" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image274.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image275.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image276.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image277.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image278.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image279.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image280.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image281.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image282.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image283.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image284.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image285.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image286.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image287.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image288.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image289.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image290.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image291.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image292.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image293.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image294.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image295.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image296.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image297.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image298.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image299.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image300.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image301.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image302.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image303.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image304.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image305.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image306.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image307.jpg" />
+    <Resource Include="Resources\Literature\П-240и-4 методическое пособие.files\image308.jpg" />
+    <Content Include="Resources\Literature\П-240и-4 методическое пособие.htm" />
+    <Content Include="Resources\Literature\П-244И-4 методическое пособие.htm" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\colorschememapping.xml" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\filelist.xml" />
+    <Content Include="Resources\Literature\Подготовка по связи.files\header.htm" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\image002.jpg" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\image003.jpg" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\image004.jpg" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\image005.png" />
+    <Resource Include="Resources\Literature\Подготовка по связи.files\image006.png" />
+    <Content Include="Resources\Literature\Подготовка по связи.htm" />
+    <Content Include="Resources\Literature\CommunicationPreparation.html" />
+    <Content Include="Resources\Literature\Радиорелейные-станции-Р-409М_-Р-415_-Р-419.html" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image001.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image002.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image003.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image004.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image005.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image006.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image007.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image008.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image009.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image010.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image011.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image012.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image013.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image014.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image015.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image016.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image017.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image018.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image019.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image020.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image021.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image022.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image023.jpg" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image024.png" />
+    <Resource Include="Resources\Literature\СП ТЛГ 2020.files\image025.png" />
+    <Content Include="Resources\Literature\СП ТЛГ 2020.htm" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image001.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image002.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image003.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image004.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image005.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image006.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image007.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image008.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image009.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image010.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image011.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image012.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image013.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image014.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image015.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image016.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image017.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image018.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image019.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image020.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image021.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image022.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image023.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image024.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image025.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image026.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image027.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image028.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image029.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image030.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image031.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image032.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image033.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image034.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image035.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image036.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image037.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image038.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image039.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image040.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image041.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image042.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image043.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image044.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image045.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image046.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image047.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image048.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image049.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image050.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image051.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image052.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image053.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image054.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image055.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image056.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image057.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image058.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image059.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image060.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image061.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image062.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image063.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image064.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image065.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image066.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image067.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image068.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image069.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image070.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image071.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image072.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image073.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image074.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image075.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image076.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image077.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image078.gif" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image079.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image080.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image081.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image082.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image083.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image084.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image085.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image086.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image087.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image088.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image089.jpg" />
+    <Resource Include="Resources\Literature\техническая подготовка Тема № 11 П-244И-4.files\image090.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\colorschememapping.xml" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\filelist.xml" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image002.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image003.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image004.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image005.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image006.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image007.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image008.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image009.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image010.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image011.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image012.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image013.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image014.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image015.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image016.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image017.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image018.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image019.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image020.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image021.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image022.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image023.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image024.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image025.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image026.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image027.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image028.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image029.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image030.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image031.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image032.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image033.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image034.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image035.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image036.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image037.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image038.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image039.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image040.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image041.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image042.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image043.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image044.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image045.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image046.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image047.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image048.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image049.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image050.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image051.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image052.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image053.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image054.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image055.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image056.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image057.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image058.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image059.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image060.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image061.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image062.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image063.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image064.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image065.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image066.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image067.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image068.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image069.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image070.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image071.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image072.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image073.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image074.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image075.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image076.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image077.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image078.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image079.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image080.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image081.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image082.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image083.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image084.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image085.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image086.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image087.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image088.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image089.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image090.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image091.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image092.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image093.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image094.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image095.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image096.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image097.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image098.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image099.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image100.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image101.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image103.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image104.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image105.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image106.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image107.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image109.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image110.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image111.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image113.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image114.jpg" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image115.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image116.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image117.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image118.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image119.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\image120.png" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\item0001.xml" />
+    <Resource Include="Resources\Literature\ТП ТЛГ 2020.files\props002.xml" />
+    <Content Include="Resources\Literature\ТП ТЛГ 2020.htm" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\colorschememapping.xml" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\filelist.xml" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image001.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image002.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image003.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image004.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image005.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image006.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image007.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image008.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image009.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image010.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image011.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image012.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image013.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image014.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image015.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image016.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image017.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image018.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image019.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image020.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image021.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image022.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image023.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image024.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image025.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image026.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image027.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image028.jpg" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image029.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image030.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image031.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image032.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image033.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image034.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image035.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image036.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image037.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image038.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image039.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image040.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image041.png" />
+    <Resource Include="Resources\Literature\УТК МКСС.files\image042.png" />
+    <Content Include="Resources\Literature\УТК МКСС.htm" />
+    <Content Include="Teach_Trenag.exe" />
+    <Content Include="СП ТЛГ 2020.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MainWindowBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bd\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.103.0.12\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.103.0.12\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.103.0.12\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.103.0.12\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.103.0.120\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

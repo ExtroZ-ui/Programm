@@ -1,0 +1,172 @@
+﻿<Window x:Class="Project.Print" Style="{DynamicResource DarkWindow}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="Print" Height="{Binding SystemParameters.PrimaryScreenHeight}" Width="{Binding SystemParameters.PrimaryScreenWidth}" WindowStartupLocation="CenterScreen" WindowState="Maximized" TextInput="Window_TextInput" Loaded="Window_Loaded"  >
+    <Viewbox StretchDirection="Both" Stretch="UniformToFill" >
+        <Grid Background="#1B1B1D">
+            <Grid Margin="0,0,0,662" Background="#1B1B1D" Width="1280" HorizontalAlignment="Center">
+                <Label Content="Кол-во набранных символов:" Style="{DynamicResource DarkLable}" FontSize="13"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock x:Name="textBlockChar" Style="{DynamicResource  DarkTextBlockBase}" Text="000"   FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="25" TextAlignment="Center"  FontWeight="Bold" Margin="196,0,0,0" />
+
+                <Label Content="Время:" Style="{DynamicResource DarkLable}" FontSize="13"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="234,0,0,0"/>
+                <TextBlock x:Name="textBlockTimer"  Style="{DynamicResource  DarkTextBlockBase}" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="35" TextAlignment="Center" FontWeight="Bold" Margin="284,0,0,0" />
+
+                <Label Content="Кол-во ошибок:" Style="{DynamicResource DarkLable}" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="331,0,0,0"/>
+                <TextBlock x:Name="textBlockError" Style="{DynamicResource  DarkTextBlockBase}" Text="0"  FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="35" TextAlignment="Center" FontWeight="Bold" Margin="441,0,0,0" />
+                <ProgressBar x:Name="progressBaarTemp"  Width="300" Height="20" Maximum="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Label Content="Темп:" Style="{DynamicResource DarkLable}" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="806,0,0,0"/>
+                <TextBlock x:Name="textBlockTemp" Style="{DynamicResource  DarkTextBlockBase}" Text="0"  FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="35" TextAlignment="Center" FontWeight="Bold" Margin="851,0,0,0" />
+
+                <Label Content="Макс Темп:" Style="{DynamicResource DarkLable}" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="898,0,0,0"/>
+                <TextBlock x:Name="textBlockMaxTemp" Style="{DynamicResource  DarkTextBlockBase}" Text="0"  FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="35" TextAlignment="Center" FontWeight="Bold" Margin="975,0,0,0" />
+                <Button x:Name="GoBack" Style="{DynamicResource  DarkButtonBase}" Content="Завершить задание" HorizontalAlignment="Left" Margin="1159,0,0,0" VerticalAlignment="Center" Click="GoBack_Click"/>
+            </Grid>
+
+            <Border BorderThickness="2" BorderBrush="Black" Width="1280" Margin="0,42,0,515">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <RichTextBox x:Name="textBlockInput" FontSize="20" Block.LineHeight="1" Background="White" Width="1256" IsReadOnly="True" />
+                </ScrollViewer>
+
+            </Border>
+            <Border BorderThickness="2" BorderBrush="Black" Width="1280" Margin="0,189,0,352">
+                <TextBlock x:Name="textBlockInputSet" Style="{DynamicResource DarkTextBlockBase}" HorizontalAlignment="Center" FontSize="20" Background="White"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="1280" Height="161" Focusable="True"/>
+            </Border>
+
+            <Canvas x:Name="canvasKey" Margin="162,383,157,0"  Visibility="Visible">
+                <Button x:Name="ButtRed1" Content="`" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FFFF2323"/>
+                <Button x:Name="ButtRed2" Content="1" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FFFF2323" HorizontalAlignment="Left" Canvas.Left="65" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow1" Content="2" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FFFFFF44" HorizontalAlignment="Left" Canvas.Left="130" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen1" Content="3" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FF53FB53" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="195"/>
+                <Button x:Name="ButtBlue1" Content="4" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FF5454FD" Canvas.Left="260" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue2" Content="5" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FF5454FD" Canvas.Left="325" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue3" Content="6" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FF5454FD" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="390"/>
+                <Button x:Name="ButtPink1" Content="7" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FFEC3CFF" Canvas.Left="455" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed3" Content="8" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FFFF2323" Canvas.Left="520" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow2" Content="( &#xa;9" Height="50" Width="60" FontSize="18" FontWeight="Bold" Background="#FFFFFF44" Canvas.Left="585" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen2" Content=") &#xa;0" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="650" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen3" Content="-" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="715" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen4" Content="+ &#xa;    =" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="780" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen5" Content="Back" Height="50" Width="110" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="845" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button x:Name="ButtRed4" Content="Tab" Height="50" Width="85" FontSize="18" Background="#FFFF2323" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="55"/>
+                <Button x:Name="ButtRed5" Content="Q &#xa;    Й" Height="50" Width="60" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="90" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="55"/>
+                <Button x:Name="ButtYellow3" Content="W &#xa;    Ц" Height="50" Width="60" FontSize="18" Background="#FFFFFF44" FontWeight="Bold" Canvas.Left="155" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen6" Content="E &#xa;    У" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="220" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue4" Content="R &#xa;    К" Height="50" Width="60" FontSize="18" Background="#FF5454FD" FontWeight="Bold" Canvas.Left="285" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue5" Content="T &#xa;    Е" Height="50" Width="60" FontSize="18" Background="#FF5454FD" FontWeight="Bold" Canvas.Left="350" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtPink2" Content="Y &#xa;    Н" Height="50" Width="60" FontSize="18" Background="#FFEC3CFF" FontWeight="Bold" Canvas.Left="415" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtPink3" Content="U &#xa;    Г" Height="50" Width="60" FontSize="18" Background="#FFEC3CFF" FontWeight="Bold" Canvas.Left="480" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed6" Content="I &#xa;    Ш" Height="50" Width="60" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="545" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow4" Content="O &#xa;    Щ" Height="50" Width="60" FontSize="18" Background="#FFFFFF44" FontWeight="Bold" Canvas.Left="610" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen7" Content="P &#xa;    З" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="675" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen8" Content="[ &#xa;    Х" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="740" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen9" Content="] &#xa;    Ъ" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="805" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen10" Content="\" Height="50" Width="85" FontSize="18" FontWeight="Bold" Background="#FF53FB53" Canvas.Left="870" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button x:Name="ButtRed7" Content="Caps" Height="50" Width="120" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed8" Content="A &#xa;    Ф" Height="50" Width="60" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="125" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow5" Content="S &#xa;    Ы" Height="50" Width="60" FontSize="18" Background="#FFFFFF44" FontWeight="Bold" Canvas.Left="190" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen11" Content="D &#xa;    В" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="255" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue6" Content="F &#xa;    А" Height="50" Width="60" FontSize="18" Background="#FF5454FD" FontWeight="Bold" Canvas.Left="320" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue7" Content="G &#xa;    П" Height="50" Width="60" FontSize="18" Background="#FF5454FD" FontWeight="Bold" Canvas.Left="385" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtPink4" Content="H &#xa;    Р" Height="50" Width="60" FontSize="18" Background="#FFEC3CFF" FontWeight="Bold" Canvas.Left="450" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtPink5" Content="J &#xa;    О" Height="50" Width="60" FontSize="18" Background="#FFEC3CFF" FontWeight="Bold" Canvas.Left="515" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed9" Content="K &#xa;    Л" Height="50" Width="60" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="580" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow6" Content="L &#xa;    Д" Height="50" Width="60" FontSize="18" Background="#FFFFFF44" FontWeight="Bold" Canvas.Left="645" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen12" Content="; &#xa;    Ж" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="710" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen13" Content="' &#xa;    Э" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="775" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen0" Content="Enter" Height="50" Width="115" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="840" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button x:Name="ButtRed10" Content="LShift" Height="50" Width="150" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Top="165" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed11" Content="Z &#xa;    Я" Height="50" Width="60" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="155" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow7" Content="X &#xa;    Ч" Height="50" Width="60" FontSize="18" Background="#FFFFFF44" FontWeight="Bold" Canvas.Left="220" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen15" Content="C &#xa;    С" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="285" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue8" Content="V &#xa;    М" Height="50" Width="60" FontSize="18" Background="#FF5454FD" FontWeight="Bold" Canvas.Left="350" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtBlue9" Content="B &#xa;    И" Height="50" Width="60" FontSize="18" Background="#FF5454FD" FontWeight="Bold" Canvas.Left="415" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtPink6" Content="N &#xa;    Т" Height="50" Width="60" FontSize="18" Background="#FFEC3CFF" FontWeight="Bold" Canvas.Left="480" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtPink7" Content="M &#xa;    Ь" Height="50" Width="60" FontSize="18" Background="#FFEC3CFF" FontWeight="Bold" Canvas.Left="545" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed12" Content=", &#xa;    Б" Height="50" Width="60" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="610" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtYellow8" Content=". &#xa;    Ю" Height="50" Width="60" FontSize="18" Background="#FFFFFF44" FontWeight="Bold" Canvas.Left="675" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen16" Content="/    ?&#xa;    ." Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="740" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen17" Content="RShift" Height="50" Width="150" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="805" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button x:Name="ButtRed13" Content="LCtrl" Height="50" Width="80" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Top="220" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed14" Content="LWin" Height="50" Width="80" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="85" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtRed15" Content="LAlt" Height="50" Width="80" FontSize="18" Background="#FFFF2323" FontWeight="Bold" Canvas.Left="170" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Space" Height="50" Width="380" FontSize="18" FontWeight="Bold" Canvas.Left="255" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen18" Content="RAlt" Height="50" Width="80" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="640" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen19" Content="RWin" Height="50" Width="80" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="725" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen20" Content="RM" Height="50" Width="60" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="810" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="ButtGreen21" Content="RCtrl" Height="50" Width="80" FontSize="18" Background="#FF53FB53" FontWeight="Bold" Canvas.Left="875" Canvas.Top="220" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+
+
+
+
+
+            </Canvas >
+
+            <Canvas Margin="162,383,157,0"  Visibility="Collapsed">
+
+                <Button Content="1" Height="50" Width="60" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Canvas.Left="65" VerticalAlignment="Center"/>
+                <Button Content="2" Height="50" Width="60" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Canvas.Left="130" VerticalAlignment="Center"/>
+                <Button Content="3" Height="50" Width="60" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="195"/>
+                <Button Content="4" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="260" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="5" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="325" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="6" Height="50" Width="60" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="390"/>
+                <Button Content="7" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="455" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="8" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="520" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="9" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="585" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="0" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="650" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="-" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="715" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button Content="Й J" Height="50" Width="60" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="55" Canvas.Left="45"/>
+                <Button Content="   : &#xa;Ц  С" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="110" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="55"/>
+                <Button Content="У U" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="175" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="   ( &#xa;К  К" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="240" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Е Е" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="305" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="   ' &#xa;Н  N" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="370" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Г G" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="435" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Ш" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="500" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Щ" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="565" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  +  &#xa;З  Z" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="630" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="X H" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="695" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="760" Canvas.Top="55" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button Content="" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Ф F" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="100" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Ы Y" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="165" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="В W" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="230" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  -  &#xa;A  A" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="295" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="П P" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="360" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Р R" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="425" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="О O" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="490" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  }  &#xa;Л  L" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="555" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Д D" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="620" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  =  &#xa;Ж  V" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="685" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Э" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="750" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Enter" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="815" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button Content="ЦИФ" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="90"/>
+                <Button Content="Я Q" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="155" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Ч" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="220" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  '   &#xa;C  S" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="285" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="   *   &#xa;M  M" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="350" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="И |" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="415" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="T Т" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="480" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  /   &#xa;Ь  X" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="545" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="  ?   &#xa;Б  В" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="610" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="Ю " Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="675" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="РУС" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="740" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="ЛАТ" Height="50" Width="60" FontSize="18" FontWeight="Bold" Canvas.Left="805" Canvas.Top="165" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Content="" Height="50" Width="380" FontSize="18" FontWeight="Bold" Canvas.Left="255" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Canvas >
+        </Grid>
+    </Viewbox>
+</Window>

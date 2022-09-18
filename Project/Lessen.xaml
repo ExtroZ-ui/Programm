@@ -1,0 +1,35 @@
+﻿<Window x:Class="Project.Lessen" Style="{DynamicResource DarkWindow}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="Lessen" Height="{Binding SystemParameters.PrimaryScreenHeight}" Width="{Binding SystemParameters.PrimaryScreenWidth}" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
+    <Viewbox StretchDirection="Both" Stretch="UniformToFill" >
+        <Grid>
+            <TabControl x:Name="tabControl" Margin="0,0,0,0" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem x:Name="itemOne" Header="Специальная подготовка">
+                    <ScrollViewer Margin="0,67,271,55"  Background="#7F26652D" VerticalScrollBarVisibility="Disabled" Height="546" >
+                        <Grid x:Name="LessenGrid" ShowGridLines="True" HorizontalAlignment="Center">
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="itemTwo" Header="Техническая подготовка">
+                    <ScrollViewer Margin="0,67,273,55"  Background="#7F26652D" VerticalScrollBarVisibility="Disabled" >
+                        <Grid x:Name="LessenTwoGrid" ShowGridLines="True">
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+            </TabControl>
+            <Button Content="Назад" Style="{DynamicResource DarkButtonBase}" FontSize="14" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="10,675,1130,10" Click="Button_Click" />
+            <Rectangle Style="{DynamicResource DarkRectangle}" HorizontalAlignment="Left" Height="544" Margin="1012,92,0,0" Stroke="Black" VerticalAlignment="Top" Width="268"/>
+
+            <Button x:Name="GoLesson" Style="{DynamicResource DarkButtonBase}" Content="Перейти к выполнению" FontSize="14" Height="35" Width="160" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="1012,601,108,84" Click="GoLesson_Click" />
+            <ScrollViewer HorizontalAlignment="Left" Margin="1013,92,0,0" VerticalAlignment="Top" Height="340" Width="267">
+                <TextBlock x:Name="Descript" Style="{DynamicResource DarkTextBlockBase}" TextWrapping="Wrap" Text="Описание" Height="473" Width="267" FontSize="13" TextAlignment="Center" />
+            </ScrollViewer>
+        </Grid>
+    </Viewbox>
+</Window>
