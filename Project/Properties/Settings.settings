@@ -11,7 +11,7 @@
       <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\DESKTOP-18KKC11\Server\DataBase.accdb</Value>
     </Setting>
     <Setting Name="DirectNormativ" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\DESKTOP-18KKC11\Server\Norm209</Value>
+      <Value Profile="(Default)">\\DESKTOP-18KKC11\Server\Unity\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

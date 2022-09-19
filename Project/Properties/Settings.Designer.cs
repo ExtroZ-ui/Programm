@@ -36,7 +36,7 @@ namespace Project.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\DESKTOP-18KKC11\\Server\\Norm209")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\DESKTOP-18KKC11\\Server\\Unity\\")]
         public string DirectNormativ {
             get {
                 return ((string)(this["DirectNormativ"]));

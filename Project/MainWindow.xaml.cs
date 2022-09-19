@@ -135,7 +135,7 @@ namespace Project
                 string[] subs = temp.Split(' ');
                 special = specNoAut.SelectedItem.ToString();
                 nameUser = familyNoAut.Text;
-                if (subs[0] == "Норматив")
+                if (subs[0] == "П-321")
                 {
                     new NormativForm(tempId).Show();
                 }

@@ -44,70 +44,28 @@ namespace Project
         public NormativForm(int tempIdTest)
         {
             InitializeComponent();
-            idTest = tempIdTest;
-            process = new Process();
-            Proc();
-
-
+            idTest = tempIdTest;         
         }
 
-       async void Proc()
+        void Proc(string uri)
         {
-            string tempObjectUri = MainWindow._context.Normativ
-                .Where(i => i.idTest == idTest).Select(lit => lit.uri).FirstOrDefault();
-            process.StartInfo.FileName = $"{Properties.Settings.Default.DirectNormativ}{tempObjectUri}";           
+            process = new Process();
+            process.StartInfo.FileName = $"{Properties.Settings.Default.DirectNormativ}{uri}";
             //process.StartInfo.Arguments = "-parentHWND " + panel1.Handle.ToInt32() + " " + Environment.CommandLine;
             //process.StartInfo.UseShellExecute = true;
             //process.StartInfo.CreateNoWindow = true;
             //Size();
-            process.Start(); 
-            
+            process.Start();
+
             // process.WaitForInputIdle();
             // Doesn't work for some reason ?!
             //unityHWND = process.MainWindowHandle;
             // EnumChildWindows(panel1.Handle, WindowEnum, IntPtr.Zero);
             new Thread(() => DisplayProcessStatus(process)).Start();
-            await DoStuff();
         }
 
-        private async Task DoStuff()
-        {
-            var progress = new Progress<double>(ReportProgress);
-            string result = await Task<string>.Factory.StartNew(() => LongMethod(progress));
-            Debug.WriteLine(result);
-        }
 
-        private string LongMethod(IProgress<double> progress)
-        {
-            Random random = new Random();
-            var list = new List<string>();
-            int cap = 20000;
 
-            for (int i = 0; i < cap; i++)
-            {
-                int randomNumber = random.Next(0, cap);
-                list.Add(randomNumber.ToString());
-
-                // Overload operations here
-                var hashSet = new HashSet<string>(list);
-                list = hashSet.ToList<string>();
-
-                progress.Report(ConvertToPercentage(i, cap));
-            }
-
-            int randomIndex = random.Next(0, list.Count);
-            return list[randomIndex];
-        }
-
-        private void ReportProgress(double value)
-        {
-            progress.Value = value;
-        }
-
-        private double ConvertToPercentage(int value, int count)
-        {
-            return (double)value * 100 / count;
-        }
         // System.Windows.SystemParameters.PrimaryScreenWidth
         private void Size()
         {
@@ -199,6 +157,29 @@ namespace Project
 
             }
 
+        }
+
+        private void ComboBoxNormativ_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboBoxNormativ.ItemsSource = MainWindow._context.Normativ.Select(n => n.name).ToList();
+        }
+
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            string nameObjec = MainWindow._context.Normativ
+    .Where(i => i.idTest == idTest).Select(lit => lit.name).FirstOrDefault();
+            if (ComboBoxNormativ.SelectedItem.ToString() == nameObjec)
+            {
+                string tempObjectUri = MainWindow._context.Normativ
+    .Where(i => i.name == nameObjec).Select(lit => lit.uri).FirstOrDefault();
+                Proc(tempObjectUri);
+            }
+        }
+
+        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataGridStat.ItemsSource = MainWindow._context.StateTest
+    .Where(i => i.familiy == MainWindow.nameUser).ToList();
         }
     }
 }
