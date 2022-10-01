@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq.Mapping;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.net.Class
 {
-    [Table(Name = "User")]
+    [Table("Library")]
     public class Library
     {
-        [Column(Name = "id", IsPrimaryKey = true, IsDbGenerated = true)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column(Name = "adress")]
+        [Column]
         public string adress { get; set; }
 
-        [Column(Name = "specialization")]
+        [Column]
         public string specialization { get; set; }
 
-        [Column(Name = "inscription")]
+        [Column]
         public string inscription { get; set; }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -28,12 +29,6 @@ namespace Project
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow.DBConnect();
-
-            foreach (var item in idQustErrors)
-            {
-                ErrorDataGrid.Items.Add(MainWindow._context.Question.Where(t => t.id == item));
-            }          
             
         }
 
@@ -41,6 +36,16 @@ namespace Project
         {
             new MainWindow().Show();
             Close();
+        }
+
+        private void ErrorDataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow._context.Question.Load();
+            foreach (var item in idQustErrors)
+            {
+                ErrorDataGrid.Items.Add(MainWindow._context.Question.Local.Where(t => t.id == item));
+            }
+
         }
     }
 }

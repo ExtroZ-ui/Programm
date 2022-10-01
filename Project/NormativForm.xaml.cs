@@ -18,7 +18,7 @@ namespace Project
     /// 
 
     public partial class NormativForm : Window
-    {       
+    {
 
         //[DllImport("User32.dll")]
         //static extern bool MoveWindow(IntPtr handle, int x, int y, double width, double height, bool redraw);
@@ -40,11 +40,15 @@ namespace Project
 
         private int idTest;
         public static int grady;
+        public static string nameTeast;
         public static string timeNorm;
         public NormativForm(int tempIdTest)
         {
             InitializeComponent();
-            idTest = tempIdTest;         
+            idTest = tempIdTest;
+            string tempObjectUri = MainWindow._context.Normativ
+.Where(i => i.idTest == idTest).Single().uri;
+            Proc(tempObjectUri);
         }
 
         void Proc(string uri)
@@ -61,7 +65,7 @@ namespace Project
             // Doesn't work for some reason ?!
             //unityHWND = process.MainWindowHandle;
             // EnumChildWindows(panel1.Handle, WindowEnum, IntPtr.Zero);
-            new Thread(() => DisplayProcessStatus(process)).Start();
+            new Thread(() => DisplayProcessStatus(process, uri)).Start();
         }
 
 
@@ -78,108 +82,62 @@ namespace Project
             return 0;
         }
 
-        private void ExitG()
-        {            
-            string nameTest = MainWindow._context.Normativ
-                .Where(i => i.idTest == idTest).Select(lit => lit.name).FirstOrDefault();
-                DateTime date = DateTime.Now;
-                MainWindow._context.StateTest.Add(new StateTest()
-                {
-                    data = date.ToString("dd.MM.yyyy"),
-                    nameTest = nameTest,
-                    grade = grady,
-                    error = 0,
-                    familiy = MainWindow.nameUser,
-                    discipline = "0",
-                    speciality = MainWindow.special,
-                    namePK = Environment.MachineName,
-                    nomVopr = "-",
-                    time = timeNorm,
-                    vzdov = MainWindow.vzvod,
-                    rota = MainWindow.rota,
-                    idUser = MainWindow.idUser,
+        public static void ExitG()
+        {
+            DateTime date = DateTime.Now;
+            MainWindow._context.StateTest.Add(new StateTest()
+            {
+                data = date.ToString("dd.MM.yyyy"),
+                nameTest = nameTeast,
+                grade = grady,
+                error = 0,
+                familiy = MainWindow.nameUser,
+                discipline = "0",
+                speciality = MainWindow.special,
+                namePK = Environment.MachineName,
+                nomVopr = "-",
+                time = timeNorm,
+                vzdov = MainWindow.vzvod,
+                rota = MainWindow.rota,
+                idUser = MainWindow.idUser,
 
-                });
-                MainWindow._context.SaveChanges();    
+            });
+            MainWindow._context.SaveChanges();
         }
 
-        public void DisplayProcessStatus(Process process)
+        public void DisplayProcessStatus(Process process,string lern)
         {
             bool activ = true;
             while (activ)
             {
-                 process.Refresh();
-
+                process.Refresh();
 
                 if (process.HasExited)
                 {
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        ExitG();
-                        Close();
                         activ = false;
-                    try
-                    {
-                        process.CloseMainWindow();
+                        Close();
+                        try
+                        {
+                            process.CloseMainWindow();
+                            Thread.Sleep(1000);
+                            while (!process.HasExited)
+                            {
+                                activ = false;
+                                process.Kill();
+                            }
+                                
+                        }
+                        catch (Exception)
+                        {
 
-                        Thread.Sleep(1000);
-                        while (!process.HasExited)
-                            process.Kill();
-                    }
-                    catch (Exception)
-                    {
-
-                    }
+                        }
                     });
-                    
 
                 }
             }
-                
-        }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ExitG();
-            new MainWindow().Show();
-            Close();
-            try
-            {
-                process.CloseMainWindow();
-
-                Thread.Sleep(1000);
-                while (!process.HasExited)
-                    process.Kill();
-            }
-            catch (Exception)
-            {
-
-            }
-
-        }
-
-        private void ComboBoxNormativ_Loaded(object sender, RoutedEventArgs e)
-        {
-            ComboBoxNormativ.ItemsSource = MainWindow._context.Normativ.Select(n => n.name).ToList();
-        }
-
-        private void ButtonStart_Click(object sender, RoutedEventArgs e)
-        {
-            string nameObjec = MainWindow._context.Normativ
-    .Where(i => i.idTest == idTest).Select(lit => lit.name).FirstOrDefault();
-            if (ComboBoxNormativ.SelectedItem.ToString() == nameObjec)
-            {
-                string tempObjectUri = MainWindow._context.Normativ
-    .Where(i => i.name == nameObjec).Select(lit => lit.uri).FirstOrDefault();
-                Proc(tempObjectUri);
-            }
-        }
-
-        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            DataGridStat.ItemsSource = MainWindow._context.StateTest
-    .Where(i => i.familiy == MainWindow.nameUser).ToList();
         }
     }
 }

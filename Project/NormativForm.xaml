@@ -7,44 +7,5 @@
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
         Title="NormativForm" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" SnapsToDevicePixels="True"
-        Width="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenHeightKey}}" WindowStyle="None" >
-    <Grid>
-        <Label Content="Выберите Норматив" FontSize="16" Width="180" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
-        <ComboBox x:Name="ComboBoxNormativ" HorizontalAlignment="Left" Margin="188,7,0,0" VerticalAlignment="Top" Width="200" Height="30" Loaded="ComboBoxNormativ_Loaded"/>
-        <Button x:Name="ButtonStart" Content="Начать" HorizontalAlignment="Left" Margin="409,7,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonStart_Click"/>
-        <DataGrid x:Name="DataGridStat" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,48,0,0" HorizontalAlignment="Center" Width="1366" Height="657" VerticalAlignment="Top"  IsReadOnly="True" FontSize="20" Focusable="True" AutoGenerateColumns="False" Loaded="DataGrid_Loaded">
-            <DataGrid.Resources>
-                <Style TargetType="TextBlock" x:Key="WrapText">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    <Setter Property="Background" Value="#FFBBBABA"/>
-                </Style>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                </Style>
-                <!--Style TargetType="DataGridColumnHeader">
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="Background" Value="#2C2C37"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Style>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="#2C2C37"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Style-->
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding data}" Header="Дата" ElementStyle="{StaticResource WrapText}"/>
-                <DataGridTextColumn Binding="{Binding speciality}" Header="Спецальность" ElementStyle="{StaticResource WrapText}"/>
-                <DataGridTextColumn Binding="{Binding nameTest}" Header="Название теста" ElementStyle="{StaticResource WrapText}"/>
-                <DataGridTextColumn Binding="{Binding grade}" Header="Оценка" ElementStyle="{StaticResource WrapText}"/>
-                <DataGridTextColumn Binding="{Binding time}" Header="Время выполнения" ElementStyle="{StaticResource WrapText}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
-    </Grid>
+        Width="0" Height="0" WindowStyle="None" >
 </Window>

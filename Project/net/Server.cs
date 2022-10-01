@@ -22,11 +22,11 @@ namespace Project.net
             // Сервак в 1 корп 192.168.0.1
             try
             {
-                client = new TcpClient("192.168.43.200", 8888);
+                client = new TcpClient("192.168.0.1", 8888);
                 br = new BinaryReader(client.GetStream());
                 bw = new BinaryWriter(client.GetStream());
-                bw.Write(Environment.MachineName);
                 unityName = $"{Environment.MachineName} Unity";
+                bw.Write(Environment.MachineName);
                 new Thread(RecvThread).Start();
             }
             catch (Exception ex)
@@ -47,19 +47,22 @@ namespace Project.net
             {
                 for (; ; )
                 {
-                    if(unityName == $"{Environment.MachineName} Unity")
-                    {
+
                         string msg = br.ReadString();
                         string[] msgParams = msg.Split('|');
                         if (msgParams[0] == "")
                         {
-                            NormativForm.grady = int.Parse(msgParams[1]);
-                            NormativForm.timeNorm = msgParams[2];
-                            //AddChatMessage(msgParams[1], msgParams[2]);
-                        }
-                    }
-                    
+                                if (msgParams[1] == Environment.MachineName.ToString())
+                                {
+                                NormativForm.nameTeast = msgParams[2];
+                                NormativForm.grady = int.Parse(msgParams[3]);
+                                NormativForm.timeNorm = msgParams[4];
+                                NormativForm.ExitG();
+                                }
+                          }
                 }
+                    
+                    
             }
             catch
             {

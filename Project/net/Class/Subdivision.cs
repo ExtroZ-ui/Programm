@@ -1,29 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Linq.Mapping;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.net.Class
 {
-
+    [Table("Subdivision")]
     public class Subdivision
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column]
+        [Column("rota")]
         public int rota { get; set; }
 
-        [Column]
+        [Column("rota")]
         public int vzvod { get; set; }
 
-        [Column]
+        [Column("specShort")]
         public string specShort { get; set; }
 
-        [Column]
+        [Column("specAll")]
         public string specAll { get; set; }
 
     }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Project.ErrorTest"
+﻿<Window x:Class="Project.ErrorTest"  Background="Transparent"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,30 +6,13 @@
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
         Title="ErrorTest"  Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SnapsToDevicePixels="True" WindowStyle="None" BorderBrush="Black" BorderThickness="3" Loaded="Window_Loaded">
-    <Grid>
-        <DataGrid x:Name="ErrorDataGrid" IsReadOnly="True" FontSize="20" Focusable="True"  AutoGenerateColumns="False" Height="536" VerticalAlignment="Top" HorizontalAlignment="Center" Width="970" Margin="0,10,0,0">
-            <DataGrid.Resources>
-                <Style TargetType="TextBlock" x:Key="WrapText">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    <Setter Property="Background" Value="#FFBBBABA"/>
-                </Style>
-                <!--Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#2C2C37"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Style>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="#2C2C37"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Style-->
-            </DataGrid.Resources>
+    <Grid Background="Black" Opacity="0.8" Margin="0,0,0,0">
+        <DataGrid x:Name="ErrorDataGrid" IsReadOnly="True" FontSize="20" Focusable="True"  AutoGenerateColumns="False" Height="536" VerticalAlignment="Top" HorizontalAlignment="Center" Width="970" Margin="0,10,0,0" Loaded="ErrorDataGrid_Loaded">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding question}" Header="Вопросы на которые был дан не правильно ответ" Width="970"  ElementStyle="{StaticResource WrapText}"/>
-                <!--DataGridTextColumn Binding="{Binding answerTrue}" Header="Правильный ответ" Width="400" ElementStyle="{StaticResource WrapText}"/-->
+                <DataGridTextColumn Binding="{Binding question}" Header="Вопросы на которые был дан не правильно ответ" Width="970"/>
+                <DataGridTextColumn Binding="{Binding answerTrue}" Header="Правильный ответ"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Exit" Content="Выйти" FontSize="16" Width="160" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="10,551,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Exit_Click" />
+        <Button x:Name="Exit" Style="{DynamicResource ButtonStyle}" Content="Выйти" FontSize="16" Width="160" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="10,551,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Exit_Click" />
     </Grid>
 </Window>

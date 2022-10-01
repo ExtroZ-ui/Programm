@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.Linq.Mapping;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 namespace Project.net.Class
 {
-    [Table(Name = "Подразделения")]
+    [Table("Podr")]
     internal class Podr
     {
 
-        [Column(Name = "Код", IsPrimaryKey = true, IsDbGenerated = true)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column(Name = "Рота")]
+        [Column]
         public int rota { get; set; }
 
-        [Column(Name = "Взвод")]
+        [Column]
         public int vzvod { get; set; }
 
-        [Column(Name = "Специальность(сокр)")]
+        [Column]
         public string sp_soc { get; set; }
 
 
-        [Column(Name = "Специальность(полн)")]
+        [Column]
         public string sp_pol { get; set; }
     }
 }

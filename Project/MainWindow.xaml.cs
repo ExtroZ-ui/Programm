@@ -1,9 +1,11 @@
-﻿using LinqToDB.Remote;
+﻿using CefSharp.DevTools.Database;
+using LinqToDB.Remote;
 using Microsoft.EntityFrameworkCore;
 using Project.net;
 using Project.net.Class;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Globalization;
@@ -21,7 +23,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Unity;
 
 namespace Project
 {
@@ -42,15 +43,10 @@ namespace Project
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            ComboboxSpec();
-        }
-
 
         string[] digits;
 
-        public void ComboboxFIO( )
+        public void ComboboxFIO()
         {
             if (Pod.SelectedItem != null)
             {
@@ -58,15 +54,9 @@ namespace Project
                 rota = int.Parse(digits[0].ToString());
                 vzvod = int.Parse(digits[1].ToString());
                 FIO.ItemsSource = _context.User.Where(i => i.rota == rota && i.vzvod == vzvod).Select(s => $"{s.famile} {s.name} {s.otch}").ToList();
-            }       
+            }
         }
 
-        public void ComboboxSpec()
-        { 
-            Spec.ItemsSource = _context.Subdivision.Where(s => s.rota != 0 && s.vzvod != 0).Select(s => s.specAll).Distinct().ToList();
-            specNoAut.ItemsSource = _context.Subdivision.Where(s => s.rota == 0 && s.vzvod == 0).Select(s => s.specAll).Distinct().ToList();  
-         }
-       
 
         public void ComboboxPod()
         {
@@ -115,7 +105,7 @@ namespace Project
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             if (Spec.SelectedItem != null && Pod.SelectedItem != null && FIO.SelectedItem != null)
-            {                 
+            {
                 string[] sentences = FIO.SelectedItem.ToString().Split(' ');
 
                 idUser = _context.User.Where(n => n.famile == sentences[0].ToString() && n.name == sentences[1].ToString() && n.famile == sentences[2].ToString()).Select(s => s.id).FirstOrDefault();
@@ -135,7 +125,7 @@ namespace Project
                 string[] subs = temp.Split(' ');
                 special = specNoAut.SelectedItem.ToString();
                 nameUser = familyNoAut.Text;
-                if (subs[0] == "П-321")
+                if (subs[0] == "Норматив")
                 {
                     new NormativForm(tempId).Show();
                 }
@@ -144,8 +134,8 @@ namespace Project
                     new TestLesson(tempId).Show();
                     Close();
                 }
-                
-                
+
+
             }
             else
             {
@@ -155,7 +145,7 @@ namespace Project
 
         private void ProjectMenu_Click(object sender, RoutedEventArgs e)
         {
-          new ProjectMenu().Show();
+            new ProjectMenu().Show();
             Close();
         }
 
@@ -218,7 +208,7 @@ namespace Project
 
         public void ChckButton()
         {
-            if(Spec.SelectedItem != null && Pod.SelectedItem != null && FIO.SelectedItem != null)
+            if (Spec.SelectedItem != null && Pod.SelectedItem != null && FIO.SelectedItem != null)
             {
                 Start.IsEnabled = true;
             }
@@ -230,7 +220,7 @@ namespace Project
             {
                 Start.IsEnabled = false;
             }
-           
+
         }
 
         private void familyNoAut_TextChanged(object sender, TextChangedEventArgs e)
@@ -267,7 +257,7 @@ namespace Project
             if (testNoAut.SelectedItem != null)
             {
                 testbPodNoAut.Visibility = Visibility.Collapsed;
-                ChckButton();               
+                ChckButton();
             }
             else
             {
@@ -278,7 +268,6 @@ namespace Project
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
             new Statist().Show();
-            //Close();
         }
 
         private void specNoAut_MouseEnter(object sender, MouseEventArgs e)
@@ -315,6 +304,11 @@ namespace Project
             {
                 labFamilyNoAut.Visibility = Visibility.Visible;
             }
+
+            if (familyNoAut.IsFocused == false)
+            {
+                labFamilyNoAut.Visibility = Visibility.Visible;
+            }
         }
 
         private void testNoAut_MouseEnter(object sender, MouseEventArgs e)
@@ -335,5 +329,44 @@ namespace Project
                 testbPodNoAut.Visibility = Visibility.Visible;
             }
         }
+
+        private void specNoAut_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                specNoAut.ItemsSource = _context.Subdivision.Where(s => s.rota == 0 && s.vzvod == 0).Select(s => s.specAll).Distinct().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void Spec_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Spec.ItemsSource = _context.Subdivision.Where(s => s.rota != 0 && s.vzvod != 0).Select(s => s.specAll).Distinct().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+
+        private void familyNoAut_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (!familyNoAut.IsFocused)
+            {
+                labFamilyNoAut.Visibility = Visibility.Visible;
+            }
+        }
     }
 }
+
+
+

@@ -26,8 +26,8 @@ namespace Project.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\\\DESKTOP-18KKC11\\Server\\DataBase.a" +
-            "ccdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Mode = Share Deny None;Data Source=\\\\DESKTOP-18K" +
+            "KC11\\Server\\DataBase.mdb")]
         public string Connect {
             get {
                 return ((string)(this["Connect"]));

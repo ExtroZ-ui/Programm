@@ -2,7 +2,7 @@
 using Project.net.Class;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -42,20 +42,21 @@ namespace Project
         private TextBox tempTextBox;
         Random ran = new Random();
 
-        private string nameTest;
+        private string nameTestAll;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow.DBConnect();
             countQuestion = Convert.ToInt32(MainWindow._context.Test.Where(i => i.id == idTest).Select(t => t.countQuestion).FirstOrDefault());
             lableQues.Content = $"Количество вопросов {i} из {countQuestion}";
-            nameTest = MainWindow._context.Test.Local.Where(i => i.id == idTest).Select(t => t.name).FirstOrDefault();
-            lableNameTest.Content = nameTest;
+            nameTestAll = MainWindow._context.Test.Where(i => i.id == idTest).Select(t => t.name).FirstOrDefault();
+            lableNameTest.Content = nameTestAll;
             GoToTimer();
             int temp = Convert.ToInt32(MainWindow._context.Test.Where(i => i.id == idTest).Select(t => t.time).FirstOrDefault());
             time = TimeSpan.FromMinutes(temp);
             timeTest = timeTest.AddMinutes(temp);
-            idQust = MainWindow._context.Question.Where(i => i.idTest == idTest).Select(p => p.id).OrderBy(x => ran.Next()).ToArray();
+            idQust = MainWindow._context.Question.Where(i => i.idTest == idTest).Select(p => p.id).ToArray();
+            idQust = idQust.OrderBy(x => ran.Next()).ToArray();
             textSel = new string[countQuestion];
             idQustError = new int[countQuestion];
             textSel = MainWindow._context.Question.Where(p => p.idTest == idTest).Select(t => t.answerTrue).ToArray();
@@ -133,7 +134,7 @@ namespace Project
             lableFour.BorderBrush = Brushes.Black;
         }
 
-        private string colorBorder = "#000000";
+        private string colorBorder = "#FF08FB00";
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             ClearBrushAnswer();
@@ -161,6 +162,34 @@ namespace Project
                     tempTextBox = lableAnswerThree;
                     break;
                 case Key.D4:
+                    lableAnswerFour.BorderThickness = new Thickness(5, 5, 5, 5);
+                    lableAnswerFour.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    lableFour.BorderThickness = new Thickness(5, 5, 0, 5);
+                    lableFour.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    tempTextBox = lableAnswerFour;
+                    break;
+                case Key.NumPad1:
+                    lableAnswerOne.BorderThickness = new Thickness(5, 5, 5, 5);
+                    lableAnswerOne.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    lableOne.BorderThickness = new Thickness(5, 5, 0, 5);
+                    lableOne.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    tempTextBox = lableAnswerOne;
+                    break;
+                case Key.NumPad2:
+                    lableAnswerTwo.BorderThickness = new Thickness(5, 5, 5, 5);
+                    lableAnswerTwo.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    lableTwo.BorderThickness = new Thickness(5, 5, 0, 5);
+                    lableTwo.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    tempTextBox = lableAnswerTwo;
+                    break;
+                case Key.NumPad3:
+                    lableAnswerThree.BorderThickness = new Thickness(5, 5, 5, 5);
+                    lableAnswerThree.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    lableThree.BorderThickness = new Thickness(5, 5, 0, 5);
+                    lableThree.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
+                    tempTextBox = lableAnswerThree;
+                    break;
+                case Key.NumPad4:
                     lableAnswerFour.BorderThickness = new Thickness(5, 5, 5, 5);
                     lableAnswerFour.BorderBrush = (Brush)(new BrushConverter().ConvertFrom(colorBorder));
                     lableFour.BorderThickness = new Thickness(5, 5, 0, 5);
@@ -231,81 +260,93 @@ namespace Project
 
         private int p;
 
-        private void buttNext_Click(object sender, RoutedEventArgs e)
+        private void NextQustion()
         {
-            textSel[i] = tempTextBox.Text;
-
-
-
-            if (i != countQuestion)
+            if (tempTextBox.Text != null)
             {
-                if (MainWindow._context.Question.Where(p => p.id == idQust.ToList()[i]).Select(g => g.answerTrue).FirstOrDefault() == tempTextBox.Text)
+                textSel[i] = tempTextBox.Text;
+                if (i != countQuestion)
                 {
-                    // tempId += $"{MainWindow._context.Question.Local.ToObservableCollection().Where(p => p.id == idQust.ToList()[i]).Select(g => g.id).FirstOrDefault()} ";
-                    idQustError[p] = MainWindow._context.Question.Where(p => p.id == idQust.ToList()[i]).Select(g => g.id).FirstOrDefault();
-                    p++;
+                    if (MainWindow._context.Question.Where(p => p.id == idQust.ToList()[i]).Select(g => g.answerTrue).FirstOrDefault() == tempTextBox.Text)
+                    {
+                        // tempId += $"{MainWindow._context.Question.Local.ToObservableCollection().Where(p => p.id == idQust.ToList()[i]).Select(g => g.id).FirstOrDefault()} ";
+                        idQustError[p] = MainWindow._context.Question.Where(p => p.id == idQust.ToList()[i]).Select(g => g.id).FirstOrDefault();
+                        p++;
 
-                }
-                if (i == 19)
-                {
-                    buttNext.Content = "Завершить тест";
-                }
+                    }
+                    if (i == 19)
+                    {
+                        buttNext.Content = "Завершить тест";
+                    }
 
-                i++;
+                    i++;
 
-                if (i != 0)
-                {
-                    buttBack.Visibility = Visibility.Visible;
-                }
-                CreationTest();
-            }
-            else
-            {
-                DateTime date = DateTime.Now;
-                idQustError = idQustError.Distinct().ToArray();
-
-
-                if (idQustError.Count() <= 2)
-                {
-
-                    gradeTes = 4;
-                }
-                if (idQustError.Count() <= 1)
-                {
-                    gradeTes = 5;
+                    if (i != 0)
+                    {
+                        buttBack.Visibility = Visibility.Visible;
+                    }
+                    CreationTest();
                 }
                 else
                 {
-                    gradeTes = 2;
+                    DateTime date = DateTime.Now;
+                    idQustError = idQustError.Distinct().ToArray();
+                    idQustError = idQustError.Take(idQustError.Count() - 1).ToArray();
+
+
+                    if (idQustError.Count() <= 2)
+                    {
+
+                        gradeTes = 4;
+                    }
+                    if (idQustError.Count() <= 1)
+                    {
+                        gradeTes = 5;
+                    }
+                    else
+                    {
+                        gradeTes = 2;
+                    }
+
+
+                    MainWindow._context.StateTest.Add(new StateTest()
+                    {
+                        data = date.ToString("dd.MM.yyyy"),
+                        nameTest = nameTestAll,
+                        grade = gradeTes,
+                        error = idQustError.Count(),
+                        familiy = MainWindow.nameUser,
+                        discipline = "0",
+                        speciality = MainWindow.special,
+                        namePK = Environment.MachineName,
+                        nomVopr = "-",
+                        time = $"{timeDb.Minutes}:{timeDb.Seconds}",
+                        vzdov = MainWindow.vzvod,
+                        rota = MainWindow.rota,
+                        idUser = MainWindow.idUser,
+
+                    });
+                    MainWindow._context.SaveChanges();
+
+                    new ShowResul().Show();
+                    Close();
                 }
-
-
-                MainWindow._context.StateTest.Add(new StateTest()
-                {
-                    data = date.ToString("dd.MM.yyyy"),
-                    nameTest = nameTest,
-                    grade = gradeTes,
-                    error = idQustError.Count(),
-                    familiy = MainWindow.nameUser,
-                    discipline = "0",
-                    speciality = MainWindow.special,
-                    namePK = Environment.MachineName,
-                    nomVopr = "-",
-                    time = $"{timeDb.Minutes}:{timeDb.Seconds}",
-                    vzdov = MainWindow.vzvod,
-                    rota = MainWindow.rota,
-                    idUser = MainWindow.idUser,
-
-                });
-                MainWindow._context.SaveChanges();
-
-                new ShowResul().Show();
             }
+            else
+            {
+                MessageBox.Show("Выберите ответ");
+            }
+        }
+
+        private void buttNext_Click(object sender, RoutedEventArgs e)
+        {
+            NextQustion();
         }
 
         private void buttExit_Click(object sender, RoutedEventArgs e)
         {
-            new Performance(Lessen.nameTema, Lessen.nameLess).Show();
+            new MainWindow().Show();
+            //new Performance(Lessen.nameTema, Lessen.nameLess).Show();
             Close();
         }
 
@@ -347,6 +388,14 @@ namespace Project
                     SetSelect(4);
                 }
 
+            }
+        }
+
+        private void buttNext_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                NextQustion();
             }
         }
     }

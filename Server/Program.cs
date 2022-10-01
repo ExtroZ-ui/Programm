@@ -46,7 +46,7 @@ namespace Server
             try
             {
             clients = new List<ClientObject>();
-            var tcpListener = new TcpListener(IPAddress.Parse("0.0.0.0"), 8888);
+            var tcpListener = new TcpListener(IPAddress.Parse("192.168.43.181"), 8888);
             tcpListener.Start();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Ожидание соединений...");

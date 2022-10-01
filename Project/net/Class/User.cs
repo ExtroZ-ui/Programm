@@ -1,44 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq.Mapping;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.net.Class
 {
-    [Table(Name = "User")]
+    [Table("User")]
     public class User
     {
 
-        [Column(Name = "id", IsPrimaryKey = true, IsDbGenerated = true)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column(Name = "famile")]
+        [Column]
         public string famile { get; set; }
 
-        [Column(Name = "name")]
+        [Column]
         public string name { get; set; }
 
-        [Column(Name = "otch")]
+        [Column]
         public string otch { get; set; }
 
-        [Column(Name = "rota")]
+        [Column]
         public int rota { get; set; }
 
-        [Column(Name = "vzvod")]
+        [Column]
         public int vzvod { get; set; }
 
-        [Column(Name = "specal")]
+        [Column]
         public string specal { get; set; }
 
-        [Column(Name = "tp")]
+        [Column]
         public int tp { get; set; }
 
-        [Column(Name = "sp")]
+        [Column]
         public int sp { get; set; }
 
-        [Column(Name = "access")]
+        [Column]
         public bool access { get; set; }
     }
 

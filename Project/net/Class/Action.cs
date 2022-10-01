@@ -1,55 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq.Mapping;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.net.Class
 {
-    [Table(Name = "ActionsAll")]
+    [Table("Action")]
     public class Action
     {
-        [Column(Name = "id", IsPrimaryKey = true, IsDbGenerated = true)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column(Name = "type_action")]
+        [Column]
         public int type_action { get; set; }
 
-        [Column(Name = "date")]
+        [Column]
         public string date { get; set; }
 
-        [Column(Name = "id_user")]
+        [Column]
         public int id_user { get; set; }
 
-        [Column(Name = "time")]
+        [Column]
         public DateTime time { get; set; }
 
-        [Column(Name = "tema")]
+        [Column]
         public int tema { get; set; }
 
-        [Column(Name = "less")]
+        [Column]
         public int less { get; set; }
 
-        [Column(Name = "time_work")]
+        [Column]
         public string time_work { get; set; }
 
-        [Column(Name = "num_input")]
+        [Column]
         public int num_input { get; set; }
 
-        [Column(Name = "error")]
+        [Column]
         public int error { get; set; }
 
-        [Column(Name = "grade")]
+        [Column]
         public int grade { get; set; }
 
-        [Column(Name = "num_exercise")]
+        [Column]
         public int num_exercise { get; set; }
 
-        [Column(Name = "temp")]
+        [Column]
         public int temp { get; set; }
 
-        [Column(Name = "pc")]
+        [Column]
         public string pc { get; set; }
     }
 }

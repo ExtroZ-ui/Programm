@@ -1,52 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq.Mapping;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.net.Class
 {
-    [Table(Name = "ButtonGen")]
+    [Table("ButtonGen")]
     public class ButtonGen
     {
-        [Column(Name = "id", IsPrimaryKey = true, IsDbGenerated = true)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column(Name = "column")]
+        [Column]
         public int column { get; set; }
 
-        [Column(Name = "row")]
+        [Column]
         public int row { get; set; }
 
-        [Column(Name = "numburTema")]
+        [Column]
         public int numburTema { get; set; }
 
-        [Column(Name = "numburLesson")]
+        [Column]
         public int numburLesson { get; set; }
 
-        [Column(Name = "nameTema")]
+        [Column]
         public string nameTema { get; set; }
 
-         [Column(Name = "nameLesson")]
+         [Column]
         public string nameLesson { get; set; }
 
-         [Column(Name = "description")]
+         [Column]
         public string description { get; set; }
 
-        [Column(Name = "discipline")]
+        [Column]
         public string discipline { get; set; }
 
-        [Column(Name = "specialization")]
+        [Column]
         public string specialization { get; set; }
 
-        [Column(Name = "test")]
+        [Column]
         public int test { get; set; }
 
-        [Column(Name = "objectUri")]
+        [Column]
         public string objectUri { get; set; }
 
-        [Column(Name = "literature")]
+        [Column]
         public string literature { get; set; }
     }
 }

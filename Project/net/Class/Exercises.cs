@@ -1,52 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq.Mapping;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.net.Class
 {
-    [Table(Name = "Exercises")]
+    [Table("Exercises")]
     public class Exercises
     {
-        [Column(Name = "id", IsPrimaryKey = true, IsDbGenerated = true)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Column(Name = "discipline")]
+        [Column]
         public string discipline { get; set; }
 
-        [Column(Name = "tema")]
+        [Column]
         public int tema { get; set; }
 
-        [Column(Name = "zanytie")]
+        [Column]
         public int zanytie { get; set; }
 
-        [Column(Name = "vid")]
+        [Column]
         public int vid { get; set; }
 
-        [Column(Name = "name_lesson")]
+        [Column]
         public string name_lesson { get; set; }
 
-        [Column(Name = "description_lesson")]
+        [Column]
         public string description_lesson { get; set; }
 
-        [Column(Name = "type_lesson")]
+        [Column]
         public string type_lesson { get; set; }
 
-        [Column(Name = "link")]
+        [Column]
         public string link { get; set; }
 
-        [Column(Name = "text")]
+        [Column]
         public string text { get; set; }
 
-        [Column(Name = "specialty")]
+        [Column]
         public string specialty { get; set; }
 
-        [Column(Name = "vremy")]
+        [Column]
         public int vremy { get; set; }
 
-        [Column(Name = "temp")]
+        [Column]
         public int temp { get; set; }
     }
 }

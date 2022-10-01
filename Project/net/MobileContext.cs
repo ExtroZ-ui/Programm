@@ -1,17 +1,30 @@
 ﻿using Project.net.Class;
-using EntityFrameworkCore.Jet;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Forms;
+using System.Windows;
+using System;
+using Action = Project.net.Class.Action;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Project.net
 {
     public class MobileContext : DbContext
     {
+
         public MobileContext() : base()
+        {
+        try
         {
 
         }
+        catch (Exception ex)
+        {
+
+                MessageBox.Show(ex.Message);
+    
+            }
+    }
         public DbSet<Action> ActionsAll { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<ButtonGen> ButtonGen { get; set; }
@@ -33,8 +46,15 @@ namespace Project.net
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StateTest>().ToTable("StateTest");
+            modelBuilder.Entity<Action>().ToTable("Action");
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<ButtonGen>().ToTable("ButtonGen");
+            modelBuilder.Entity<Question>().ToTable("Question");
             modelBuilder.Entity<Test>().ToTable("Test");
+            modelBuilder.Entity<Subdivision>().ToTable("Subdivision");
+            modelBuilder.Entity<Library>().ToTable("Library");
+            modelBuilder.Entity<Exercises>().ToTable("Exercises");
+            modelBuilder.Entity<StateTest>().ToTable("StateTest");
             modelBuilder.Entity<Normativ>().ToTable("Normativ");
         }
     }
